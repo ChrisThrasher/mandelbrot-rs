@@ -1,0 +1,23 @@
+name: CI
+
+on: [push, pull_request, workflow_dispatch]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install SFML
+        run: brew install sfml
+      - name: Format
+        run: cargo fmt --check
+      - name: Build
+        run: cargo build --verbose
+      - name: Test
+        run: cargo test --verbose
+      - name: Lint
+        run: cargo clippy

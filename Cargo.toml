@@ -1,0 +1,13 @@
+[package]
+name = "mandelbrot-rs"
+description = "SFML-based Mandelbrot set viewer program"
+version = "0.1.0"
+license = "mit"
+readme = "README.md"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+num-complex = "0.4.5"
+sfml = "0.21.0"

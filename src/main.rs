@@ -175,3 +175,46 @@ fn main() {
         ));
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate() {
+        assert_eq!(calculate(Complex::new(0.0, 0.0), 0), 0);
+        assert_eq!(calculate(Complex::new(0.0, 0.0), 1), 1);
+        assert_eq!(calculate(Complex::new(0.0, 0.0), 10), 10);
+
+        assert_eq!(calculate(Complex::new(1.0, 0.0), 0), 0);
+        assert_eq!(calculate(Complex::new(1.0, 0.0), 1), 1);
+        assert_eq!(calculate(Complex::new(1.0, 0.0), 10), 3);
+    }
+
+    #[test]
+    fn test_color() {
+        assert_eq!(color(0, 0), Color::rgb(0, 0, 0));
+        assert_eq!(color(1, 1), Color::rgb(0, 0, 0));
+        assert_eq!(color(10, 10), Color::rgb(0, 0, 0));
+        assert_eq!(color(100, 100), Color::rgb(0, 0, 0));
+        assert_eq!(color(1000, 1000), Color::rgb(0, 0, 0));
+
+        assert_eq!(color(0, 1), Color::rgb(255, 50, 50));
+        assert_eq!(color(0, 10), Color::rgb(255, 50, 50));
+        assert_eq!(color(0, 100), Color::rgb(255, 50, 50));
+        assert_eq!(color(0, 1000), Color::rgb(255, 50, 50));
+
+        assert_eq!(color(1, 10), Color::rgb(255, 54, 50));
+        assert_eq!(color(1, 100), Color::rgb(255, 54, 50));
+        assert_eq!(color(1, 1000), Color::rgb(255, 54, 50));
+
+        assert_eq!(color(10, 100), Color::rgb(255, 84, 50));
+        assert_eq!(color(10, 1000), Color::rgb(255, 84, 50));
+
+        assert_eq!(color(100, 1000), Color::rgb(118, 255, 50));
+        assert_eq!(color(200, 1000), Color::rgb(50, 186, 255));
+        assert_eq!(color(300, 1000), Color::rgb(255, 50, 0));
+        assert_eq!(color(400, 1000), Color::rgb(255, 187, 50));
+        assert_eq!(color(500, 1000), Color::rgb(50, 255, 119));
+    }
+}
